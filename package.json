@@ -1,0 +1,24 @@
+{
+  "name": "steed",
+  "module": "main.ts",
+  "type": "module",
+  "author": {
+    "name": "Senkita",
+    "url": "https://github.com/Senkita"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@types/three": "^0.163.0",
+    "three": "^0.163.0",
+    "vite": "^5.2.8"
+  }
+}
