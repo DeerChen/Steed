@@ -1,8 +1,8 @@
 /*
  * @Author       : Senkita
  * @Date         : 2024-04-13 10:59:16
- * @LastEditors  : Senkita
- * @LastEditTime : 2024-04-13 16:16:47
+ * @LastEditors  : KarasuShin
+ * @LastEditTime : 2024-04-16 09:14:00
  * @Description  : 导航线
  */
 import { abst, parkingLotArr, parkingSpacesArr } from "./abst";
@@ -11,6 +11,7 @@ import * as THREE from "three";
 import { bfsFindPath, dfsFindPath } from "./pathfinding";
 import {
   GRID_SIZE,
+  NAV_LINE_NAME,
   PARKING_LOT_LENGTH,
   PARKING_LOT_WIDTH,
 } from "./global/constants";
@@ -24,9 +25,18 @@ const generateRandomNumbers = (freeSpacesNum: number): number[] => {
   return randomNumbers;
 };
 
+const removeNavLine = () => {
+  const navLine = scene.getObjectByName(NAV_LINE_NAME) as THREE.Line;
+  if (navLine) {
+    scene.remove(navLine);
+    navLine.geometry.dispose();
+    (navLine.material as THREE.Material).dispose();
+  }
+};
+
 // 重置场景
 const resetStage = () => {
-  scene.remove(line);
+  removeNavLine();
 
   parkingSpacesArr.forEach((parkingSpaceObj) => {
     parkingSpaceObj.setPlaced(true);
@@ -47,6 +57,7 @@ const randomStage = (): void => {
 let line: THREE.Object3D<THREE.Object3DEventMap>;
 
 const drawNavLine = () => {
+  removeNavLine();
   abst();
 
   const points: THREE.Vector3[] = [];
@@ -72,6 +83,7 @@ const drawNavLine = () => {
   const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
   const lineMaterial = new THREE.LineBasicMaterial({ color: 0x00ff00 });
   line = new THREE.Line(lineGeometry, lineMaterial);
+  line.name = NAV_LINE_NAME;
   scene.add(line);
 
   renderer.render(scene, camera);
