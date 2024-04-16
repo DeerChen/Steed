@@ -1,8 +1,8 @@
 /*
  * @Author       : Senkita
  * @Date         : 2024-04-13 10:51:14
- * @LastEditors  : Senkita
- * @LastEditTime : 2024-04-13 13:55:06
+ * @LastEditors  : KarasuShin
+ * @LastEditTime : 2024-04-16 09:13:00
  * @Description  : 全局常量
  */
 const SCREEN_WIDTH = window.innerWidth; // 屏幕宽度
@@ -411,6 +411,8 @@ const ROADS = [
   { coord: { y: 10, x: 9 }, val: 40 },
 ];
 
+const NAV_LINE_NAME = "navLine";
+
 export {
   SCREEN_WIDTH,
   SCREEN_HEIGHT,
@@ -422,4 +424,5 @@ export {
   PARKING_SPACE_WIDTH,
   PARKING_SPACES,
   ROADS,
+  NAV_LINE_NAME,
 };
